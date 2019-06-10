@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Tagify</title>
+    <!-- Styles -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous"></script>   
+  </head> 
+  <body>
+  
+  <!-- Komponenter som fremvises dynamisk -->
+    
+    <!-- Add tag-modal -->
+    <div class="modal fade" id="addTagModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content text-center">
+          <div class="modal-body">
+          <p>Tilføj tag</p>
+          <img class="img-fluid" id="albumImg" alt="Responsive image" src="">
+          <form class="oprettag">
+              <div class="form-group ui-front">
+                  <input type="text" autocomplete="off" name="name" class="form-control input-field " id="exampleInputTag" aria-describedby="tagHelp" placeholder="Skriv tagnavn">
+                <input type="hidden" name="useralbumid">
+              </div>
+         
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Luk</button>
+            <button type="submit" class="btn btn-success opret">Gem tag</button>
+        </form>
+           </div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <!-- Log ind-modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content text-center">
+          <div class="modal-body">
+            <h1 class="header">Tagify</h1>
+            <p>for</p>
+            <img src="images/Spotify_Logo_RGB_Green.png" class="img-fluid"  alt="Responsive image">
+            <p>Tilføj tags til albums i dit Spotify-bibliotek.</p>
+            <p>Du skal logge ind med din Spotify-profil for at bruge tjenesten.</p>
+            <a href="controllers/login.php" class="btn btn-success">Log ind med Spotify</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Synkroniser-modal -->
+    <div class="modal fade" id="syncModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content text-center">
+          <div class="modal-body">
+            <h1 class="header">Tagify</h1>
+            <p>for</p>
+            <img src="images/Spotify_Logo_RGB_Green.png" class="img-fluid"  alt="Responsive image">
+            <p>Dit bibliotek synkroniseres. Vent venligst ...</p> 
+            <div class="d-flex justify-content-center">
+                <div class="spinner-border text-success" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  <!-- Sidens egentlige indhold -->
+    <div class="container">
+      
+      <!-- Logout box -->
+      <section class="text-right" id="user">
+        <div class="text-right">
+          <img  class="img-fluid" id="profile"  alt="Responsive image" src="">
+          <a tabindex="0" id="logout-link" data-toggle="popover" title="Popover title" data-placement="bottom"><span id="name"></span><i id="down" class="fas fa-chevron-down"></i><i id="up"class="fas fa-chevron-up"></i></a>
+        </div>
+      </section>
+      
+      <!-- Sidens overskrift -->
+      <section class="text-center" id="header">
+        <h1 class="header">Tagify</h1>
+        <p>Tilføj tags til dine albums</p>
+        <p>fra</p>
+      </section>
+      
+      <!-- Spotify-logo -->
+        <div class="text-center" id="logo">
+          <img src="images/Spotify_Logo_RGB_Green.png" class="img-fluid"  alt="Responsive image">
+        </div>
+      <div class="clearfix"></div>
+      
+      <!-- controllere til sortering --> 
+      <section class="row" id="filter">
+        <!-- pladsholder -->
+      </section>
+      <div class="clearfix"></div>
+      
+      <section class="row" id="albums">
+        <!-- pladsholder for albums -->
+      </section>
+  
+    </div> <!-- container slutter -->
+  
+    <!-- Custom scripts loades her -->
+    <script type="text/javascript" src="scripts.js"></script>
+  </body>
